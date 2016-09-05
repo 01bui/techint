@@ -33,7 +33,9 @@ class LinkedList(object):
         count = 0
         current = self.head
         while current.next:
-            
+            if count == position:
+                return current.value
+            count += 1    
         return None
 
     def insert(self, new_element, position):
