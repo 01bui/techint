@@ -35,7 +35,7 @@ class LinkedList(object):
         while current.next:
             if count == position:
                 return current.value
-            count += 1    
+            count += 1
         return None
 
     def insert(self, new_element, position):
@@ -43,8 +43,11 @@ class LinkedList(object):
         Assume the first position is "1".
         Inserting at position 3 means between
         the 2nd and 3rd elements."""
-
-        pass
+        current = self.head
+        count = 0
+        while current.next:
+            if count == position:
+                current.next = new_element
 
 
     def delete(self, value):
