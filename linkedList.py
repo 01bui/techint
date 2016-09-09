@@ -30,11 +30,14 @@ class LinkedList(object):
         """Get an element from a particular position.
         Assume the first position is "1".
         Return "None" if position is not in the list."""
-        count = 0
+        count = 1
         current = self.head
         while current.next:
-            if count == position:
-                return current.value
+            #print count
+            current = current.next
+            if count == position-1:
+                #print current.value
+                return current
             count += 1
         return None
 
@@ -57,7 +60,6 @@ class LinkedList(object):
             if current.value == value:
                 current.next = None
 
-
 # Test cases
 # Set up some Elements
 e1 = Element(1)
@@ -74,7 +76,9 @@ ll.append(e3)
 # Should print 3
 print ll.head.next.next.value
 # Should also print 3
-print ll.get_position(3).value
+print ll.get_position(3).value # position in LinkedList
+print ll.get_position(4).value # position not in LinkedList
+print "Done get_position"
 
 # Test insert
 ll.insert(e4,3)
