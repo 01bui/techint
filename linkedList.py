@@ -32,14 +32,18 @@ class LinkedList(object):
         Return "None" if position is not in the list."""
         count = 1
         current = self.head
-        while current.next:
-            #print count
-            current = current.next
-            if count == position-1:
-                #print current.value
-                return current
-            count += 1
-        return None
+        if position == 1:
+            return current
+        else:
+            while current.next:
+                print count
+                current = current.next
+                print current.value
+                if count == position-1:
+                    return current
+                    count += 1
+                else:
+                    return None
 
     def insert(self, new_element, position):
         """Insert a new node at the given position.
@@ -49,8 +53,6 @@ class LinkedList(object):
         current = self.head
         count = 1
         while current.next:
-            #print count
-            #print current.next.value
             current = current.next
             if count == position-1:
                 value = current.value
@@ -61,23 +63,21 @@ class LinkedList(object):
     def delete(self, value):
         """Delete the first node with a given value."""
         current = self.head
-        print current.value
         if not self.head:
             while current.next:
+                if current.next.value == value:
+                    current.next = Element(current.next.next.value)
                 current = current.next
-                print current.value
-                if current.value == value:
-                    current.next = current.next.value
         else:
-            print "head"
+            print "aaaa"
+            print self.head.value
             self.head = current.next
             current = self.head
-            print self.head.value
-            print current.value
+            print current.next.value
             while current.next:
-                current = current.next
-                current.next = current
                 print current.next.value
+                current = current.next
+            current.next = Element(current.value)
 
 
 # Test cases
@@ -99,19 +99,27 @@ print ll.head.next.next.value
 print ll.get_position(3).value # position in LinkedList
 #print ll.get_position(4).value # position not in LinkedList
 print "Done get_position"
-
 # Test insert
 ll.insert(e4,3)
 # Should print 4 now
+print "Should print 1"
+print ll.get_position(1).value
+print "Should print 2"
+print ll.get_position(2).value
 print "Should print 4"
 print ll.get_position(3).value
+print "Should print 3"
 print ll.get_position(4).value
 
 # Test delete
+print "Test delete"
 ll.delete(1)
 # Should print 2 now
+print "Print 2"
 print ll.get_position(1).value
 # Should print 4 now
+print "Print 4"
 print ll.get_position(2).value
 # Should print 3 now
+print "Print 3"
 print ll.get_position(3).value
