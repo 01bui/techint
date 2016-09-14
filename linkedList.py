@@ -33,17 +33,15 @@ class LinkedList(object):
         count = 1
         current = self.head
         if position == 1:
-            return current
+            return self.head
         else:
             while current.next:
-                print count
+                #print count
                 current = current.next
-                print current.value
+                #print current.value
                 if count == position-1:
                     return current
-                    count += 1
-                else:
-                    return None
+                count += 1
 
     def insert(self, new_element, position):
         """Insert a new node at the given position.
