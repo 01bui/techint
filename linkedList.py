@@ -54,8 +54,8 @@ class LinkedList(object):
             current = current.next
             if count == position-1:
                 value = current.value
-                current.next = new_element
-                current.next.next = Element(value)
+                current = new_element
+                current.next = Element(value)
             count += 1
 
     def delete(self, value):
