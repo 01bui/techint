@@ -35,12 +35,10 @@ class LinkedList(object):
         if position == 1:
             return self.head
         else:
-            while current.next:
-                #print count
-                current = current.next
-                #print current.value
-                if count == position-1:
+            while current and count <= position:
+                if count == position:
                     return current
+                current = current.next
                 count += 1
 
     def insert(self, new_element, position):
