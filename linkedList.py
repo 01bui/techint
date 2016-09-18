@@ -48,12 +48,11 @@ class LinkedList(object):
         the 2nd and 3rd elements."""
         current = self.head
         count = 1
-        while current.next:
-            current = current.next
+        while current and count < position:
             if count == position-1:
-                value = current.value
-                current = new_element
-                current.next = Element(value)
+                new_element.next = current.next
+                current.next = new_element
+            current = current.next
             count += 1
 
     def delete(self, value):
